@@ -11,7 +11,7 @@ module.exports = {
             const bills = await Bill.find().populate('customer');
             return res.status(200).json({
                 message: 'Bills fetched successfully',
-                bills: bills
+                data: bills
             });
         } catch (err) {
             return res.status(500).json({
@@ -32,7 +32,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Bill fetched successfully',
-                bill: bill
+                data: bill
             });
         } catch (err) {
             return res.status(500).json({
@@ -69,7 +69,7 @@ module.exports = {
             
             return res.status(200).json({
                 message: 'Bill created successfully',
-                bill: bill
+                data: bill
             });
         } catch (err) {
             return res.status(500).json({
@@ -91,7 +91,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Bill replaced successfully',
-                replaced_bill: bill
+                data: bill
             });
         } catch (err) {
             return res.status(500).json({
@@ -108,7 +108,7 @@ module.exports = {
             });
             return res.status(200).json({
                 message: 'Bill updated successfully',
-                updated_bill: bill
+                data: bill
             });
         } catch (err) {
             return res.status(500).json({
@@ -142,7 +142,7 @@ module.exports = {
             
             return res.status(200).json({
                 message: 'Bill deleted successfully',
-                bill: bill
+                data: bill
             });
         } catch (err) {
             return res.status(500).json({
@@ -179,7 +179,7 @@ module.exports = {
             await bill.save();
             return res.status(200).json({
                 message: 'Detail added successfully',
-                bill: bill
+                data: bill
             });
         } catch (err) {
             return res.status(500).json({
@@ -201,7 +201,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Details fetched successfully',
-                details: bill.details
+                data: bill.details
             });
         } catch (err) {
             return res.status(500).json({
@@ -229,7 +229,7 @@ module.exports = {
 
             return res.status(200).json({
                 message: 'Total calculated successfully',
-                total: 'The total of the bill whit number '+ req.params.number +' is $'+total
+                data: 'The total of the bill whit number '+ req.params.number +' is $'+total
             });
         } catch (err) {
             return res.status(500).json({

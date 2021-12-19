@@ -9,7 +9,7 @@ module.exports = {
             const products = await Product.find().populate('provider');
             return res.status(200).json({
                 message: 'Products fetched successfully',
-                products: products
+                data: products
             });
         } catch (err) {
             return res.status(500).json({
@@ -31,7 +31,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Product fetched successfully',
-                product: product
+                data: product
             });
 
         } catch (err) {
@@ -70,7 +70,7 @@ module.exports = {
 
             return res.status(200).json({
                 message: 'Product created successfully',
-                newProduct: product
+                data: product
             });
         } catch (err) {
             return res.status(500).json({
@@ -92,7 +92,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Product replaced successfully',
-                replaced_product: product
+                data: product
             });
         } catch (err) {
             return res.status(500).json({
@@ -114,7 +114,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Product updated successfully',
-                updated_product: product
+                data: product
             });
         } catch (err) {
             return res.status(500).json({
@@ -162,12 +162,12 @@ module.exports = {
             if (product.dateExpired < new Date().setDate(new Date().getDate() - 1)) {
                 return res.status(200).json({
                     message: 'Product expired ' + Math.abs(days) + ' days ago',                    
-                    product: product
+                    data: product
                 });
             }
             return res.status(200).json({
                 message: 'Product will expire in ' + days + ' days',
-                product: product
+                data: product
             });
         } catch (err) {
             return res.status(500).json({
@@ -190,7 +190,7 @@ module.exports = {
             const iva = product.value * 0.19;
             return res.status(200).json({
                 message: 'Product iva calculated successfully',
-                iva: 'The iva of product with id ' + req.params.idProduct + ' is: $' + iva.toFixed(2)
+                data: 'The iva of product with id ' + req.params.idProduct + ' is: $' + iva.toFixed(2)
             });
         } catch (err) {
             return res.status(500).json({

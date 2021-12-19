@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Electiva</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" </head> <body>
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <span class="navbar-brand">Proyecto Electiva</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="getProvidersApi()">Proveedores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="getProductsApi()" href="#">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="getDetailsApi()">Detalles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="getCustomersApi()">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="getBillsApi()">Facturas</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="card">
+            <div class="card-header">
+                <h3 id="title"></h3>
+            </div>
+
+            <div class="card-body">
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Buscar...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <a href="#" class="btn btn-primary float-right col-4" data-toggle="modal"
+                            data-target="#modal-object-add">
+                            Agregar
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive mt-5">
+                    <table class="table table-striped table-hover" id="table">
+                        <thead>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!--- Modal ancho para agregar-->
+                <div class="modal fade" id="modal-object-add" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Proveedor</h5>
+                                <button type="button" class="close" data-dismiss="modal" id="close-modal-add" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="modal-add">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--- Modal ancho para editar-->
+                <div class="modal fade" id="modal-object-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Editar Proveedor</h5>
+                                <button type="button" class="close" data-dismiss="modal" id="close-modal-edit" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="modal-edit">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="./script2.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+
+        </body>
+
+
+</html>

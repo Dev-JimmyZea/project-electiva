@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload="onload('provider')">
+<body onload="onload('bill')">
     <div class="container-fluid">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,7 +25,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="./">Proveedores</a>
                     </li>
                     <li class="nav-item">
@@ -37,7 +37,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./customer.html">Clientes</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="./bill.html">Facturas</a>
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
         </nav>
         <div class="card">
             <div class="card-header">
-                <h3>Proveedores</h3>
+                <h3>Facturas</h3>
             </div>
 
             <div class="card-body">
@@ -62,106 +62,94 @@
                     </div>
                     <div class="col-md-8">
                         <a href="#" class="btn btn-primary float-right col-4" data-toggle="modal"
-                            data-target="#modal-provider">
+                            data-target="#modal-bill">
                             Agregar
                         </a>
                     </div>
                 </div>
-
+                <!-- // const bills= [
+                //     {
+                //         "number": "01",
+                //         "dateBill": "2022-10-01T00:00:00.000Z",
+                //         "isPaid": true,
+                //         "customer": {
+                //             "idCustomer": "01",
+                //             "name": "Patricia",
+                //             "lastName": "teheran",
+                //         }
+                //     }
+                // ]; -->
 
                 <div class="table-responsive mt-5">
-                    <table class="table table-striped table-hover" id="table-provider">
+                    <table class="table table-striped table-hover" id="table-bill">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>
-                                <th>Correo</th>
+                                <th>Número</th>
+                                <th>Fecha</th>
+                                <th>Pagado</th>
+                                <th>Cliente</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody id="tbody-provider">
+                        <tbody id="tbody-bill">
 
                         </tbody>
                     </table>
                 </div>
 
-                <!-- const providers = [
-                {
-                "idProvider": "01",
-                "name": "Juan",
-                "lastName": "Zea Guarín",
-                "address": "Calle 1A #2-21 3piso",
-                "phone": "3213456789",
-                "email": "juanito02@gmail.com",
-                }
-                ]; -->
-
-
-                <div class="modal fade" id="modal-provider" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modal-bill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Agregar Proveedor</h5>
-                                <button type="button" class="close" data-dismiss="modal" id="close-modal-provider"
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Factura</h5>
+                                <button type="button" class="close" data-dismiss="modal" id="close-modal-bill"
                                     aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-provider">
+                                <form id="form-bill">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="id-provider">Id Proveedor</label>
-                                            <input type="text" id="id-provider" name="id-provider" class="form-control"
+                                            <label for="number-bill">Numero</label>
+                                            <input type="number" id="number-bill" name="number-bill"
+                                                class="form-control" required>
+                                        </div>
+
+                                        <div class="col-12 col-sm">
+                                            <label for="date-bill">Fecha</label>
+                                            <input type="date" id="date-bill" name="date-bill" class="form-control"
                                                 required>
                                         </div>
 
-                                        <div class="col-12 col-sm">
-                                            <label for="name-provider">Nombre</label>
-                                            <input type="text" id="name-provider" name="name-provider"
-                                                class="form-control" required>
-                                        </div>
-
                                     </div>
 
                                     <div class="row">
+
                                         <div class="col-12 col-sm">
-                                            <label for="last-name-provider">Apellido</label>
-                                            <input type="text" id="last-name-provider" name="last-name-provider"
-                                                class="form-control" required>
+                                            <label for="paid-bill">Pagado</label>
+                                            <select id="paid-bill" name="paid-bill" class="form-control" required>
+                                                <option value="true">Si</option>
+                                                <option value="false">No</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="address-provider">Direccion</label>
-                                            <input type="text" id="address-provider" name="address-provider"
-                                                class="form-control" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-12 col-sm">
-                                            <label for="phone-provider">Telefono</label>
-                                            <input type="text" id="phone-provider" name="phone-provider"
-                                                class="form-control" required>
-                                        </div>
-
-                                        <div class="col-12 col-sm">
-                                            <label for="email-provider">Correo</label>
-                                            <input type="text" id="email-provider" name="email-provider"
-                                                class="form-control" required>
+                                            <label for="customer-bill">Cliente</label>
+                                            <select id="customer-bill" name="customer-bill" class="form-control"
+                                                required>
+                                                <option value="">Seleccione un cliente</option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" id="close-modal-provider"
+                                        <button type="button" class="btn btn-secondary" id="close-modal-bill"
                                             data-dismiss="modal">Cerrar</button>
                                         <button type="submit" class="btn btn-primary"
-                                            id="add-modal-provider">Agregar</button>
+                                            id="add-modal-bill">Agregar</button>
                                     </div>
                                 </form>
                             </div>
@@ -170,68 +158,60 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="modal-provider-edit" tabindex="-1" role="dialog"
+                <div class="modal fade" id="modal-bill-edit" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Editar Proveedor</h5>
-                                <button type="button" class="close" data-dismiss="modal" id="close-modal-edit-provider"
+                                <h5 class="modal-title" id="exampleModalLabel">Editar Factura</h5>
+                                <button type="button" class="close" data-dismiss="modal" id="close-modal-edit-bill"
                                     aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-edit-provider">
+                                <form id="form-edit-bill">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="id-provider-edit">Id Proveedor</label>
-                                            <input type="text" id="id-provider-edit" name="id-provider-edit"
+                                            <label for="number-edit-bill">Numero</label>
+                                            <input type="number" id="number-edit-bill" name="number-edit-bill"
                                                 class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="name-provider-edit">Nombre</label>
-                                            <input type="text" id="name-provider-edit" name="name-provider-edit"
+                                            <label for="date-edit-bill">Fecha</label>
+                                            <input type="date" id="date-edit-bill" name="date-edit-bill"
                                                 class="form-control" required>
                                         </div>
 
                                     </div>
 
                                     <div class="row">
+
                                         <div class="col-12 col-sm">
-                                            <label for="last-name-provider-edit">Apellido</label>
-                                            <input type="text" id="last-name-provider-edit"
-                                                name="last-name-provider-edit" class="form-control" required>
+                                            <label for="paid-edit-bill">Pagado</label>
+                                            <select id="paid-edit-bill" name="paid-edit-bill" class="form-control"
+                                                required>
+                                                <option value="true">Si</option>
+                                                <option value="false">No</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="address-provider-edit">Direccion</label>
-                                            <input type="text" id="address-provider-edit" name="address-provider-edit"
+                                            <label for="customer-edit-bill">Cliente</label>
+                                            <select id="customer-edit-bill" name="customer-edit-bill"
                                                 class="form-control" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-12 col-sm">
-                                            <label for="phone-provider-edit">Telefono</label>
-                                            <input type="text" id="phone-provider-edit" name="phone-provider-edit"
-                                                class="form-control" required>
-                                        </div>
-
-                                        <div class="col-12 col-sm">
-                                            <label for="email-provider-edit">Correo</label>
-                                            <input type="text" id="email-provider-edit" name="email-provider-edit"
-                                                class="form-control" required>
+                                                <option value="">Seleccione un cliente</option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" id="close-modal-edit-provider"
+                                        <button type="button" class="btn btn-secondary" id="close-modal-edit-bill"
                                             data-dismiss="modal">Cerrar</button>
                                         <button type="submit" class="btn btn-primary"
-                                            id="edit-modal-provider">Editar</button>
+                                            id="add-modal-edit-bill">Editar</button>
                                     </div>
                                 </form>
                             </div>
@@ -253,5 +233,6 @@
     </script>
 
 </body>
+
 
 </html>

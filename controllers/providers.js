@@ -8,7 +8,7 @@ module.exports = {
             const providers = await Provider.find();
             return res.status(200).json({
                 message: 'Providers fetched successfully',
-                providers: providers
+                data: providers
             });
         } catch (err) {
             return res.status(500).json({
@@ -30,7 +30,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Provider fetched successfully',
-                provider: provider
+                data: provider
             });
 
         } catch (err) {
@@ -70,7 +70,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Provider replaced successfully',
-                provider: provider
+                data: provider
             });
         } catch (err) {
             return res.status(500).json({
@@ -93,7 +93,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Provider updated successfully',
-                provider: provider
+                data: provider
             });
         } catch (err) {
             return res.status(500).json({
@@ -115,7 +115,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Provider deleted successfully',
-                provider: provider
+                data: provider
             });
         } catch (err) {
             return res.status(500).json({

@@ -9,7 +9,7 @@ module.exports = {
             const details = await Detail.find().populate('product');
             return res.status(200).json({
                 message: 'Details fetched successfully',
-                details: details
+                data: details
             });
         } catch (err) {
             return res.status(500).json({
@@ -31,7 +31,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Detail fetched successfully',
-                detail: detail
+                data: detail
             });
         } catch (err) {
             return res.status(500).json({
@@ -67,7 +67,7 @@ module.exports = {
             await product.save();
             return res.status(200).json({
                 message: 'Detail created successfully',
-                detail: detail
+                data: detail
             });
         } catch (err) {
             return res.status(500).json({
@@ -89,7 +89,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Detail replaced successfully',
-                replaced_detail: detail
+                data: detail
             });
         } catch (err) {
             return res.status(500).json({
@@ -111,7 +111,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Detail updated successfully',
-                updated_detail: detail
+                data: detail
             });
         } catch (err) {
             return res.status(500).json({
@@ -136,7 +136,7 @@ module.exports = {
             await product.save();
             return res.status(200).json({
                 message: 'Detail deleted successfully',
-                detail: detail
+                data: detail
             });
         } catch (err) {
             return res.status(500).json({
@@ -162,7 +162,7 @@ module.exports = {
             detail.subtotal = subtotal;
             return res.status(200).json({
                 message: 'Subtotal calculated successfully',
-                subtotal: 'The subtotal of the detail with code '+req.params.code+' is: $'+subtotal.toFixed(2)
+                data: 'The subtotal of the detail with code '+req.params.code+' is: $'+subtotal.toFixed(2)
             });
         } catch (err) {
             return res.status(500).json({

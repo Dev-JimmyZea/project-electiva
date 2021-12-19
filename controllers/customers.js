@@ -11,7 +11,7 @@ module.exports = {
             const customers = await Customer.find();
             return res.status(200).json({
                 message: 'Customers fetched successfully',
-                customers: customers
+                data: customers
             });
         } catch (err) {
             return res.status(500).json({
@@ -33,7 +33,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Customer fetched successfully',
-                customer: customer
+                data: customer
             });
 
         } catch (err) {
@@ -73,7 +73,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Customer replaced successfully',
-                customer: customer
+                data: customer
             });
         } catch (err) {
             return res.status(500).json({
@@ -96,7 +96,7 @@ module.exports = {
             }
             return res.status(200).json({
                 message: 'Customer updated successfully',
-                customer: customer
+                data: customer
             });
         } catch (err) {
             return res.status(500).json({
@@ -142,7 +142,7 @@ module.exports = {
 
             return res.status(200).json({
                 message: 'Customer deleted successfully',
-                customer: customer
+                data: customer
             });
         } catch (err) {
             return res.status(500).json({
