@@ -24,7 +24,7 @@ module.exports = {
         try {
             const bill = await Bill.findOne({ 
                 number: req.params.number 
-            });
+            }).populate('customer');
             if (!bill) {
                 return res.status(404).json({
                     message: 'Bill not found'

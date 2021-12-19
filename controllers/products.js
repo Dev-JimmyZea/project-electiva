@@ -23,7 +23,7 @@ module.exports = {
         try {
             const product = await Product.findOne({
                 idProduct: req.params.idProduct
-            });
+            }).populate('provider');
             if (!product) {
                 return res.status(404).json({
                     message: 'Product not found',

@@ -23,7 +23,7 @@ module.exports = {
         try {
             const detail = await Detail.findOne({
                 code: req.params.code
-            });
+            }).populate('product');
             if (!detail) {
                 return res.status(404).json({
                     message: 'Detail not found',

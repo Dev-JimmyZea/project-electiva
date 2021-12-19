@@ -52,9 +52,9 @@
                 <div class="row mt-3">
                     <div class="col-md-4">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar...">
+                            <input type="text" class="form-control" placeholder="Buscar..." id="search-detail">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" onclick="filterDataAndLoadTable('detail')">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-8">
                         <a href="#" class="btn btn-primary float-right col-4" data-toggle="modal"
-                            data-target="#modal-detail">
+                            data-target="#modal-product">
                             Agregar
                         </a>
                     </div>
@@ -107,18 +107,18 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-detail">
+                                <form id="form-detail" onsubmit="createData(event, 'detail')">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="code-detail">Codigo Detalle</label>
-                                            <input type="text" id="code-detail" name="code-detail" class="form-control"
+                                            <label for="code">Codigo Detalle</label>
+                                            <input type="text" id="code" name="code" class="form-control"
                                                 required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="quantity-detail">Cantidad</label>
-                                            <input type="number" id="quantity-detail" name="quantity-detail"
+                                            <label for="cant">Cantidad</label>
+                                            <input type="number" id="cant" name="cant"
                                                 class="form-control" required>
                                         </div>
 
@@ -126,10 +126,10 @@
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="product-detail">Producto</label>
-                                            <select class="form-control" id="product-detail" name="product-detail"
+                                            <label for="product">Producto</label>
+                                            <select class="form-control" id="product" name="product"
                                                 required>
-                                                <option value="">Seleccione</option>
+                                                <option value="">Seleccione un producto</option>
                                             </select>
                                         </div>
                                     </div>
@@ -159,18 +159,18 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-edit-detail">
+                                <form id="form-edit-detail" onsubmit="replaceData(event, 'detail')">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="code-edit-detail">Codigo Detalle</label>
-                                            <input type="text" id="code-edit-detail" name="code-edit-detail"
+                                            <label for="code">Codigo Detalle</label>
+                                            <input type="text" id="code" name="code"
                                                 class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="quantity-edit-detail">Cantidad</label>
-                                            <input type="number" id="quantity-edit-detail" name="quantity-edit-detail"
+                                            <label for="cant">Cantidad</label>
+                                            <input type="number" id="cant" name="cant"
                                                 class="form-control" required>
                                         </div>
 
@@ -178,9 +178,9 @@
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="product-edit-detail">Producto</label>
-                                            <select class="form-control" id="product-edit-detail"
-                                                name="product-edit-detail" required>
+                                            <label for="product">Producto</label>
+                                            <select class="form-control" id="product"
+                                                name="product" required>
                                                 <option value="">Seleccione</option>
                                             </select>
                                         </div>

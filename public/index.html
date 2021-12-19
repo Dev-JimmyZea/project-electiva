@@ -52,9 +52,9 @@
                 <div class="row mt-3">
                     <div class="col-md-4">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar...">
+                            <input type="text" class="form-control" placeholder="Buscar..." id="search-provider">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" onclick="filterDataAndLoadTable('provider')">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -112,18 +112,18 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-provider">
+                                <form id="form-provider" onsubmit="createData(event, 'provider')">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="id-provider">Id Proveedor</label>
-                                            <input type="text" id="id-provider" name="id-provider" class="form-control"
+                                            <label for="idProvider">Id Proveedor</label>
+                                            <input type="text" id="idProvider" name="idProvider" class="form-control"
                                                 required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="name-provider">Nombre</label>
-                                            <input type="text" id="name-provider" name="name-provider"
+                                            <label for="name">Nombre</label>
+                                            <input type="text" id="name" name="name"
                                                 class="form-control" required>
                                         </div>
 
@@ -131,28 +131,28 @@
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="last-name-provider">Apellido</label>
-                                            <input type="text" id="last-name-provider" name="last-name-provider"
+                                            <label for="lastName">Apellido</label>
+                                            <input type="text" id="lastName" name="lastName"
                                                 class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="address-provider">Direccion</label>
-                                            <input type="text" id="address-provider" name="address-provider"
+                                            <label for="address">Direccion</label>
+                                            <input type="text" id="address" name="address"
                                                 class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="phone-provider">Telefono</label>
-                                            <input type="text" id="phone-provider" name="phone-provider"
+                                            <label for="phone">Telefono</label>
+                                            <input type="text" id="phone" name="phone"
                                                 class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="email-provider">Correo</label>
-                                            <input type="text" id="email-provider" name="email-provider"
+                                            <label for="email">Correo</label>
+                                            <input type="text" id="email" name="email"
                                                 class="form-control" required>
                                         </div>
                                     </div>
@@ -182,18 +182,18 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-edit-provider">
+                                <form id="form-provider-edit" onsubmit="replaceData(event, 'provider')">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="id-provider-edit">Id Proveedor</label>
-                                            <input type="text" id="id-provider-edit" name="id-provider-edit"
-                                                class="form-control" required>
+                                            <label for="idProvider">Id Proveedor</label>
+                                            <input type="text" id="idProvider-edit" name="idProvider" class="form-control"
+                                                required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="name-provider-edit">Nombre</label>
-                                            <input type="text" id="name-provider-edit" name="name-provider-edit"
+                                            <label for="name">Nombre</label>
+                                            <input type="text" id="name-edit" name="name"
                                                 class="form-control" required>
                                         </div>
 
@@ -201,28 +201,28 @@
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="last-name-provider-edit">Apellido</label>
-                                            <input type="text" id="last-name-provider-edit"
-                                                name="last-name-provider-edit" class="form-control" required>
+                                            <label for="lastName">Apellido</label>
+                                            <input type="text" id="lastName-edit" name="lastName"
+                                                class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="address-provider-edit">Direccion</label>
-                                            <input type="text" id="address-provider-edit" name="address-provider-edit"
+                                            <label for="address">Direccion</label>
+                                            <input type="text" id="address-edit" name="address"
                                                 class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="phone-provider-edit">Telefono</label>
-                                            <input type="text" id="phone-provider-edit" name="phone-provider-edit"
+                                            <label for="phone">Telefono</label>
+                                            <input type="text" id="phone-edit" name="phone"
                                                 class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="email-provider-edit">Correo</label>
-                                            <input type="text" id="email-provider-edit" name="email-provider-edit"
+                                            <label for="email">Correo</label>
+                                            <input type="text" id="email-edit" name="email"
                                                 class="form-control" required>
                                         </div>
                                     </div>
@@ -231,7 +231,7 @@
                                         <button type="button" class="btn btn-secondary" id="close-modal-edit-provider"
                                             data-dismiss="modal">Cerrar</button>
                                         <button type="submit" class="btn btn-primary"
-                                            id="edit-modal-provider">Editar</button>
+                                            id="add-modal-edit-provider">Editar</button>
                                     </div>
                                 </form>
                             </div>

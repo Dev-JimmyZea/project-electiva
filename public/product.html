@@ -52,9 +52,9 @@
                 <div class="row mt-3">
                     <div class="col-md-4">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar...">
+                            <input type="text" class="form-control" placeholder="Buscar..." id="search-product">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" onclick="filterDataAndLoadTable('product')">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -116,47 +116,45 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-product">
+                                <form id="form-product" onsubmit="createData(event, 'product')">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="id-product">Id Producto</label>
-                                            <input type="text" id="id-product" name="id-product" class="form-control"
+                                            <label for="idProduct">Id Producto</label>
+                                            <input type="text" id="idProduct" name="idProduct" class="form-control"
                                                 required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="name-product">Nombre</label>
-                                            <input type="text" id="name-product" name="name-product"
-                                                class="form-control" required>
+                                            <label for="description">Nombre</label>
+                                            <input type="text" id="description" name="description" class="form-control"
+                                                required>
                                         </div>
 
                                     </div>
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="value-product">Valor</label>
-                                            <input type="number" id="value-product" name="value-product"
-                                                class="form-control" required>
+                                            <label for="value">Valor</label>
+                                            <input type="number" id="value" name="value" class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="stock-product">Stock</label>
-                                            <input type="number" id="stock-product" name="stock-product"
-                                                class="form-control" required>
+                                            <label for="stock">Stock</label>
+                                            <input type="number" id="stock" name="stock" class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="date-expired-product">Fecha Vencimiento</label>
-                                            <input type="date" id="date-expired-product" name="date-expired-product"
-                                                class="form-control" required>
+                                            <label for="dateExpired">Fecha Vencimiento</label>
+                                            <input type="date" id="dateExpired" name="dateExpired" class="form-control"
+                                                required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="type-product">Tipo Producto</label>
-                                            <select id="type-product" name="type-product" class="form-control" required>
+                                            <label for="typeProduct">Tipo Producto</label>
+                                            <select id="typeProduct" name="typeProduct" class="form-control" required>
                                                 <option value="">Seleccione</option>
                                                 <option value="VIVERES">Viveres</option>
                                                 <option value="LICORES">Licores</option>
@@ -168,9 +166,8 @@
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="provider-product">Proveedor</label>
-                                            <select id="provider-product" name="provider-product" class="form-control"
-                                                required>
+                                            <label for="provider">Proveedor</label>
+                                            <select id="provider" name="provider" class="form-control" required>
                                                 <option value="">Seleccione</option>
                                             </select>
                                         </div>
@@ -201,18 +198,18 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-product-edit">
+                                <form id="form-product-edit" onsubmit="replaceData(event, 'product')">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="id-product-edit">Id Producto</label>
-                                            <input type="text" id="id-product-edit" name="id-product-edit"
-                                                class="form-control" required>
+                                            <label for="idProduct">Id Producto</label>
+                                            <input type="text" id="idProduct-edit" name="idProduct" class="form-control"
+                                                required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="name-product-edit">Nombre</label>
-                                            <input type="text" id="name-product-edit" name="name-product-edit"
+                                            <label for="description">Nombre</label>
+                                            <input type="text" id="description-edit" name="description"
                                                 class="form-control" required>
                                         </div>
 
@@ -220,28 +217,28 @@
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="value-product-edit">Valor</label>
-                                            <input type="number" id="value-product-edit" name="value-product-edit"
-                                                class="form-control" required>
+                                            <label for="value">Valor</label>
+                                            <input type="number" id="value-edit" name="value" class="form-control"
+                                                required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="stock-product-edit">Stock</label>
-                                            <input type="number" id="stock-product-edit" name="stock-product-edit"
-                                                class="form-control" required>
+                                            <label for="stock">Stock</label>
+                                            <input type="number" id="stock-edit" name="stock" class="form-control"
+                                                required>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="date-expired-product-edit">Fecha Vencimiento</label>
-                                            <input type="date" id="date-expired-product-edit"
-                                                name="date-expired-product-edit" class="form-control" required>
+                                            <label for="dateExpired">Fecha Vencimiento</label>
+                                            <input type="date" id="dateExpired-edit" name="dateExpired"
+                                                class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="type-product-edit">Tipo Producto</label>
-                                            <select id="type-product-edit" name="type-product-edit" class="form-control"
+                                            <label for="typeProduct">Tipo Producto</label>
+                                            <select id="typeProduct-edit" name="typeProduct" class="form-control"
                                                 required>
                                                 <option value="">Seleccione</option>
                                                 <option value="VIVERES">Viveres</option>
@@ -250,25 +247,24 @@
                                                 <option value="ASEO">Aseo</option>
                                             </select>
                                         </div>
+
                                     </div>
 
                                     <div class="row">
                                         <div class="col-12 col-sm">
-                                            <label for="provider-product-edit">Proveedor</label>
-                                            <select id="provider-product-edit" name="provider-product-edit"
-                                                class="form-control" required>
-                                                <option value="">Seleccione</option>
+                                            <label for="provider">Proveedor</label>
+                                            <select id="provider-edit" name="provider" class="form-control" required>
+                                                <option value="">Seleccione un proveedor</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" id="close-modal-edit"
-                                            data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            id="close-modal-edit-product" data-dismiss="modal">Cerrar</button>
                                         <button type="submit" class="btn btn-primary"
-                                            id="edit-modal-product">Editar</button>
+                                            id="add-modal-edit-product">Editar</button>
                                     </div>
-
                                 </form>
                             </div>
 

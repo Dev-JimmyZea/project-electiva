@@ -52,9 +52,9 @@
                 <div class="row mt-3">
                     <div class="col-md-4">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar...">
+                            <input type="text" class="form-control" placeholder="Buscar..." id="search-bill">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" onclick="filterDataAndLoadTable('bill')">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -109,18 +109,18 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-bill">
+                                <form id="form-bill" onsubmit="createData(event, 'bill')">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="number-bill">Numero</label>
-                                            <input type="number" id="number-bill" name="number-bill"
+                                            <label for="number">Numero</label>
+                                            <input type="number" id="number" name="number"
                                                 class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="date-bill">Fecha</label>
-                                            <input type="date" id="date-bill" name="date-bill" class="form-control"
+                                            <label for="dateBill">Fecha</label>
+                                            <input type="date" id="dateBill" name="dateBill" class="form-control"
                                                 required>
                                         </div>
 
@@ -129,16 +129,16 @@
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="paid-bill">Pagado</label>
-                                            <select id="paid-bill" name="paid-bill" class="form-control" required>
+                                            <label for="isPaid">Pagado</label>
+                                            <select id="isPaid" name="isPaid" class="form-control" required>
                                                 <option value="true">Si</option>
                                                 <option value="false">No</option>
                                             </select>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="customer-bill">Cliente</label>
-                                            <select id="customer-bill" name="customer-bill" class="form-control"
+                                            <label for="customer">Cliente</label>
+                                            <select id="customer" name="customer" class="form-control"
                                                 required>
                                                 <option value="">Seleccione un cliente</option>
                                             </select>
@@ -170,18 +170,18 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-edit-bill">
+                                <form id="form-edit-bill" onsubmit="replaceData(event, 'bill')">
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="number-edit-bill">Numero</label>
-                                            <input type="number" id="number-edit-bill" name="number-edit-bill"
+                                            <label for="number">Numero</label>
+                                            <input type="number" id="number" name="number"
                                                 class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="date-edit-bill">Fecha</label>
-                                            <input type="date" id="date-edit-bill" name="date-edit-bill"
+                                            <label for="dateBill">Fecha</label>
+                                            <input type="date" id="dateBill" name="dateBill"
                                                 class="form-control" required>
                                         </div>
 
@@ -190,8 +190,8 @@
                                     <div class="row">
 
                                         <div class="col-12 col-sm">
-                                            <label for="paid-edit-bill">Pagado</label>
-                                            <select id="paid-edit-bill" name="paid-edit-bill" class="form-control"
+                                            <label for="isPaid">Pagado</label>
+                                            <select id="isPaid" name="isPaid" class="form-control"
                                                 required>
                                                 <option value="true">Si</option>
                                                 <option value="false">No</option>
@@ -199,8 +199,8 @@
                                         </div>
 
                                         <div class="col-12 col-sm">
-                                            <label for="customer-edit-bill">Cliente</label>
-                                            <select id="customer-edit-bill" name="customer-edit-bill"
+                                            <label for="customer">Cliente</label>
+                                            <select id="customer" name="customer"
                                                 class="form-control" required>
                                                 <option value="">Seleccione un cliente</option>
                                             </select>
