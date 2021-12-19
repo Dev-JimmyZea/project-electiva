@@ -266,7 +266,7 @@ let idMongo = '';
 
 const editData = async (object, id) => {
     let data = await getData(object, id);
-    // data = data.data;
+    data = data.data;
     idMongo = data._id;
     console.log(data);
     let modal = document.getElementById('modal-' + object + '-edit');
