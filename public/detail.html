@@ -54,7 +54,8 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Buscar..." id="search-detail">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button" onclick="filterDataAndLoadTable('detail')">
+                                <button class="btn btn-secondary" type="button"
+                                    onclick="filterDataAndLoadTable('detail')">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -112,14 +113,12 @@
 
                                         <div class="col-12 col-sm">
                                             <label for="code">Codigo Detalle</label>
-                                            <input type="text" id="code" name="code" class="form-control"
-                                                required>
+                                            <input type="text" id="code" name="code" class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
                                             <label for="cant">Cantidad</label>
-                                            <input type="number" id="cant" name="cant"
-                                                class="form-control" required>
+                                            <input type="number" id="cant" name="cant" class="form-control" required>
                                         </div>
 
                                     </div>
@@ -127,8 +126,7 @@
                                     <div class="row">
                                         <div class="col-12 col-sm">
                                             <label for="product">Producto</label>
-                                            <select class="form-control" id="product" name="product"
-                                                required>
+                                            <select class="form-control" id="product" name="product" required>
                                                 <option value="">Seleccione un producto</option>
                                             </select>
                                         </div>
@@ -164,14 +162,12 @@
 
                                         <div class="col-12 col-sm">
                                             <label for="code">Codigo Detalle</label>
-                                            <input type="text" id="code" name="code"
-                                                class="form-control" required>
+                                            <input type="text" id="code" name="code" class="form-control" required>
                                         </div>
 
                                         <div class="col-12 col-sm">
                                             <label for="cant">Cantidad</label>
-                                            <input type="number" id="cant" name="cant"
-                                                class="form-control" required>
+                                            <input type="number" id="cant" name="cant" class="form-control" required>
                                         </div>
 
                                     </div>
@@ -179,8 +175,7 @@
                                     <div class="row">
                                         <div class="col-12 col-sm">
                                             <label for="product">Producto</label>
-                                            <select class="form-control" id="product"
-                                                name="product" required>
+                                            <select class="form-control" id="product" name="product" required>
                                                 <option value="">Seleccione</option>
                                             </select>
                                         </div>
@@ -202,6 +197,33 @@
             </div>
         </div>
     </div>
+
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="card text-center">
+            <div class="card-header">
+                <h4 class="card-title">SUBTOTAL</h4>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3 row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="subtotal" disabled>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="card-footer">
+                Pie de tarjeta
+            </div>
+        </div>
+
+    </div>
+
+
 
     <script src="./script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

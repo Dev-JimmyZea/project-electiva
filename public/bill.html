@@ -54,7 +54,8 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Buscar..." id="search-bill">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button" onclick="filterDataAndLoadTable('bill')">
+                                <button class="btn btn-secondary" type="button"
+                                    onclick="filterDataAndLoadTable('bill')">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -114,8 +115,8 @@
 
                                         <div class="col-12 col-sm">
                                             <label for="number">Numero</label>
-                                            <input type="number" id="number" name="number"
-                                                class="form-control" required>
+                                            <input type="number" id="number" name="number" class="form-control"
+                                                required>
                                         </div>
 
                                         <div class="col-12 col-sm">
@@ -138,12 +139,12 @@
 
                                         <div class="col-12 col-sm">
                                             <label for="customer">Cliente</label>
-                                            <select id="customer" name="customer" class="form-control"
-                                                required>
+                                            <select id="customer" name="customer" class="form-control" required>
                                                 <option value="">Seleccione un cliente</option>
                                             </select>
                                         </div>
                                     </div>
+
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="close-modal-bill"
@@ -175,14 +176,14 @@
 
                                         <div class="col-12 col-sm">
                                             <label for="number">Numero</label>
-                                            <input type="number" id="number" name="number"
-                                                class="form-control" required>
+                                            <input type="number" id="number" name="number" class="form-control"
+                                                required>
                                         </div>
 
                                         <div class="col-12 col-sm">
                                             <label for="dateBill">Fecha</label>
-                                            <input type="date" id="dateBill" name="dateBill"
-                                                class="form-control" required>
+                                            <input type="date" id="dateBill" name="dateBill" class="form-control"
+                                                required>
                                         </div>
 
                                     </div>
@@ -191,8 +192,7 @@
 
                                         <div class="col-12 col-sm">
                                             <label for="isPaid">Pagado</label>
-                                            <select id="isPaid" name="isPaid" class="form-control"
-                                                required>
+                                            <select id="isPaid" name="isPaid" class="form-control" required>
                                                 <option value="true">Si</option>
                                                 <option value="false">No</option>
                                             </select>
@@ -200,8 +200,7 @@
 
                                         <div class="col-12 col-sm">
                                             <label for="customer">Cliente</label>
-                                            <select id="customer" name="customer"
-                                                class="form-control" required>
+                                            <select id="customer" name="customer" class="form-control" required>
                                                 <option value="">Seleccione un cliente</option>
                                             </select>
                                         </div>
@@ -223,6 +222,59 @@
             </div>
         </div>
     </div>
+
+
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="card text-center">
+            <div class="card-header">
+                <form id="form-detail-bill" onsubmit="addDetailInBill(event)">
+
+
+                    <div class="row">
+                        <div class="col-12 col-sm">
+                            <label for="detailForBill">Detalle</label>
+                            <select id="detailForBill" name="detailForBill" class="form-control" required>
+                                <option value="">Seleccione un detalle</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm">
+                            <label for="billForDetail">Agregar a la factura:</label>
+                            <select id="billForDetail" name="billForDetail" class="form-control" required>
+                                <option value="">Seleccione una factura</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                        <div class="d-grid gap-3 mb-3">
+                            <button class="btn btn-primary" type="submit">Asociar detalle a la factura</button>
+
+                        </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">TOTAL</h4>
+                <form>
+                    <div class="mb-3 row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="total" disabled>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="card-footer">
+                <h6>Detalles asociados </h6>
+            </div>
+        </div>
+
+    </div>
+
+
 
     <script src="./script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
