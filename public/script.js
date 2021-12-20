@@ -109,12 +109,10 @@ const loadSelects = async (object) => {
 // ];
 
 const loadDatasInTable = (datas, object) => {
-    console.log(datas);
     let table = document.getElementById('table-' + object);
     let tbody = table.querySelector('tbody');
     tbody.innerHTML = '';
     datas.data.forEach(data => {
-        console.log(data);
         let tr = document.createElement('tr');
         tr.innerHTML =
             object === 'provider' ?
@@ -202,17 +200,11 @@ const createData = async (event, object) => {
 
     let idCreate = '';
     selects.forEach(select => {
-        console.log(select.value);
         idCreate = select.value;
         data[select.name] = select.value;
     });
 
-
-    console.log(data);
-    // alert('Se ha creado un nuevo ' + JSON.stringify(data));
-    console.log(object);
     const url = object === ('provider' || 'customer')  ? `http://localhost:3000/${object}` : `http://localhost:3000/${object}/${idCreate}`;
-    console.log(url);
     fetch(url, {
         method: 'POST',
         headers: {
@@ -221,7 +213,6 @@ const createData = async (event, object) => {
         body: JSON.stringify(data)
     }).then(response => response.json())
         .then(response => {
-            console.log(response);
             getDatas('http://localhost:3000/' + object, object);
             const close = document.getElementById('close-modal-' + object);
             close.click();
@@ -237,7 +228,6 @@ const deleteData = (object, id) => {
         }
     }).then(res => res.json())
         .then(data => {
-            console.log(data);
             alert('Se elimino correctamente');
             getDatas('http://localhost:3000/' + object, object);
 
@@ -268,13 +258,10 @@ const editData = async (object, id) => {
     let data = await getData(object, id);
     data = data.data;
     idMongo = data._id;
-    console.log(data);
     let modal = document.getElementById('modal-' + object + '-edit');
     let form = modal.querySelector('form');
     let inputs = form.querySelectorAll('input');
     let selects = form.querySelectorAll('select');
-
-    console.log(selects);
 
     if (object === 'provider') {
         inputs[0].value = data.idProvider;
@@ -299,8 +286,6 @@ const editData = async (object, id) => {
             option.innerHTML = provider.idProvider + ' : ' + provider.name + ' ' + provider.lastName;
             selects[1].appendChild(option);
         });
-        console.log(data.provider);
-
 
     } else if (object === 'detail') {
         inputs[0].value = data.code;
@@ -362,7 +347,6 @@ const replaceData = async (event, object) => {
         }
     });
     let dataResponse = await response.json();
-    console.log(dataResponse.message.split(' ')[0]);
     if (dataResponse.message.split(' ')[0] !== 'Failed') {
         alert('Actualizado');
         getDatas('http://localhost:3000/' + object, object);
