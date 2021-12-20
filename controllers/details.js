@@ -162,7 +162,7 @@ module.exports = {
             detail.subtotal = subtotal;
             return res.status(200).json({
                 message: 'Subtotal calculated successfully',
-                data: 'The subtotal of the detail with code '+req.params.code+' is: $'+subtotal.toFixed(2)
+                data: 'El subtotal del detalle con id '+req.params.code+' es: $'+subtotal.toFixed(2)
             });
         } catch (err) {
             return res.status(500).json({

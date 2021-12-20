@@ -1,7 +1,5 @@
 'use strict';
 
-// object = ['provider', 'product', 'detail', 'customer', 'bill']
-
 const getDatas = async (url, object) => {
     let response = await fetch(url);
     let data = await response.json();
@@ -63,70 +61,6 @@ const loadSelects = async (object) => {
         });
     }
 }
-
-// <!-- const providers = [
-//     {
-//     "idProvider": "01",
-//     "name": "Juan",
-//     "lastName": "Zea Guarín",
-//     "address": "Calle 1A #2-21 3piso",
-//     "phone": "3213456789",
-//     "email": "juanito02@gmail.com",
-//     }
-//     ]; -->
-
-// <!-- const products = [
-//     {
-//     "idProduct": "01",
-//     "description": "Guarapo",
-//     "value": 2000,
-//     "stock": 250,
-//     "dateExpired": "2025-01-01T00:00:00.000Z",
-//     "typeProduct": "VIVERES",
-//     "provider": {
-//     "idProvider": "01",
-//     "name": "Juan",
-//     "lastName": "Zea Guarín",
-//     },
-//     }
-//     ]; -->
-
-// <!-- 
-// const details = [
-// {
-// "code": "01",
-// "cant": 50,
-// "product": {
-// "idProduct": "01",
-// "description": "Guarapo",
-// },
-// }
-// ]; -->
-
-// const customers = [
-//     {
-//         "idCustomer": "01",
-//         "name": "Patricia",
-//         "lastName": "teheran",
-//         "address": "Carrera 3 con calle 4 #3-32",
-//         "phone": "3103458976",
-//         "email": "patico@gmail.com",
-//     }
-// ]; 
-
-
-// const bills= [
-//     {
-//         "number": "01",
-//         "dateBill": "2022-10-01T00:00:00.000Z",
-//         "isPaid": true,
-//         "customer": {
-//             "idCustomer": "01",
-//             "name": "Patricia",
-//             "lastName": "teheran",
-//         }
-//     }
-// ];
 
 const loadDatasInTable = (datas, object) => {
     let table = document.getElementById('table-' + object);
@@ -226,7 +160,7 @@ const createData = async (event, object) => {
         data[select.name] = select.value;
     });
 
-    const url = object === ('provider' || 'customer')  ? `http://localhost:3000/${object}` : `http://localhost:3000/${object}/${idCreate}`;
+    const url = object === ('provider' || 'customer') ? `http://localhost:3000/${object}` : `http://localhost:3000/${object}/${idCreate}`;
     fetch(url, {
         method: 'POST',
         headers: {
@@ -273,7 +207,9 @@ const filterDataAndLoadTable = async (object) => {
     data.data = array;
     loadDatasInTable(data, object);
     console.log(data)
-    const other = object === 'product' ? others(data.data[0]) : object === 'detail' ? subtotal(data.data[0]) : object === 'bill' ? total(data.data[0]) : '';
+    object === 'product' ? others(data.data[0]) : object === 'detail' ? subtotal(data.data[0]) : object === 'bill' ? total(data.data[0]) : '';
+    getDetailsForBills(id);
+    getBillsForCustomer(id, object);
 
 };
 
@@ -302,7 +238,6 @@ const subtotal = async (datas) => {
     let url = `http://localhost:3000/detail/subtotal/${datas.code}`
     fetch(url).then(response => response.json())
         .then(data =>
-            // console.log(data.data)
             document.getElementById('subtotal').value = data.data
         )
         .catch(error => console.log(error))
@@ -312,7 +247,6 @@ const total = async (datas) => {
     let url = `http://localhost:3000/bill/total/${datas.number}`
     fetch(url).then(response => response.json())
         .then(data =>
-            // console.log(data.data)
             document.getElementById('total').value = data.data
         )
         .catch(error => console.log(error))
@@ -334,13 +268,14 @@ const addDetailInBill = async (event) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-            }
-        }).then(response => response.json())
-        .then(data =>
-            console.log("EXITO")
-        )
+        }
+    }).then(response => response.json())
+        .then(data => {
+            selects[0].value = '';
+            selects[1].value = '';
+            alert(data.message)
+        })
         .catch(error => console.log(error))
-
 }
 
 
@@ -454,3 +389,35 @@ const replaceData = async (event, object) => {
 const onload = async object => {
     await getDatas('http://localhost:3000/' + object, object);
 }
+
+const getDetailsForBills = async (id) => {
+    await fetch('http://localhost:3000/bill/details/' + id)
+        .then(response => response.json())
+        .then(data => {
+            let output = '';
+            data.data.forEach(detail => {
+                output += `<tr>
+                <td>${detail.code}</td>
+                <td>${detail.cant}</td>
+                <td>${detail.subtotal}</td>
+                </tr>`;
+            });
+            document.getElementById('tbody-detail-bill').innerHTML = output;
+        })
+};
+
+const getBillsForCustomer = async (id, object) => {
+    let data = await getData(object, id);
+    let output = '';
+    console.log(data);
+    data.data.bills.forEach(bill => {
+        output += `
+        <tr>
+            <td>${bill.number}</td>
+            <td>${bill.dateBill}</td>
+            <td>${bill.isPaid ? 'Si' : 'No'}</td>
+        </tr>`;
+    });
+    document.getElementById('tbody-bill-customer').innerHTML = output;
+
+};

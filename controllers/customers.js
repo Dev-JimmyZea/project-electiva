@@ -8,7 +8,7 @@ const Product = require('../models/product');
 module.exports = {
     getCustomers: async (req, res) => {
         try {
-            const customers = await Customer.find();
+            const customers = await Customer.find().populate('bills');
             return res.status(200).json({
                 message: 'Customers fetched successfully',
                 data: customers
@@ -25,7 +25,7 @@ module.exports = {
         try {
             const customer = await Customer.findOne({
                 idCustomer: req.params.idCustomer
-            });
+            }).populate('bills');
             if (!customer) {
                 return res.status(404).json({
                     message: 'Customer not found',

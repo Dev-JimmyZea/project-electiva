@@ -161,12 +161,12 @@ module.exports = {
 
             if (product.dateExpired < new Date().setDate(new Date().getDate() - 1)) {
                 return res.status(200).json({
-                    message: 'Product expired ' + Math.abs(days) + ' days ago',                    
+                    message: 'El producto expiró hace ' + Math.abs(days) + ' dias',                    
                     data: product
                 });
             }
             return res.status(200).json({
-                message: 'Product will expire in ' + days + ' days',
+                message: 'El producto expira en ' + days + ' dias',
                 data: product
             });
         } catch (err) {
@@ -190,7 +190,7 @@ module.exports = {
             const iva = product.value * 0.19;
             return res.status(200).json({
                 message: 'Product iva calculated successfully',
-                data: 'The iva of product with id ' + req.params.idProduct + ' is: $' + iva.toFixed(2)
+                data: 'El iva del producto con id ' + req.params.idProduct + ' es: $' + iva.toFixed(2)
             });
         } catch (err) {
             return res.status(500).json({
