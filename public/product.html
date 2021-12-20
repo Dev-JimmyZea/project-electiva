@@ -54,7 +54,8 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Buscar..." id="search-product">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button" onclick="filterDataAndLoadTable('product')">
+                                <button class="btn btn-secondary" type="button"
+                                    onclick="filterDataAndLoadTable('product')">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -260,8 +261,8 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            id="close-modal-edit-product" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-secondary" id="close-modal-edit-product"
+                                            data-dismiss="modal">Cerrar</button>
                                         <button type="submit" class="btn btn-primary"
                                             id="add-modal-edit-product">Editar</button>
                                     </div>
@@ -275,6 +276,38 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="card text-center">
+            <div class="card-header">
+                <h4 class="card-title">DETALLES</h4>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3 row">
+                        <label for="expired" class="col-sm-3 col-form-label">Expira:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="expired" disabled>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="iva" class="col-sm-3 col-form-label">IVA del producto:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="iva" disabled>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="card-footer">
+                Pie de tarjeta
+            </div>
+        </div>
+
+    </div>
+
 
     <script src="./script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -41,6 +41,26 @@ const loadSelects = async (object) => {
             option.innerHTML = customer.idCustomer + ' : ' + customer.name + ' ' + customer.lastName;
             selects[1].appendChild(option);
         });
+
+
+        let response2 = await fetch('http://localhost:3000/detail');
+        let details = await response2.json();
+        details.data.forEach(detail => {
+            let option = document.createElement('option');
+            option.value = detail.code;
+            option.innerHTML = detail.code;
+            document.getElementById('detailForBill').appendChild(option);
+        });
+
+
+        let response3 = await fetch('http://localhost:3000/bill');
+        let bills = await response3.json();
+        bills.data.forEach(bill => {
+            let option = document.createElement('option');
+            option.value = bill.number;
+            option.innerHTML = bill.number;
+            document.getElementById('billForDetail').appendChild(option);
+        });
     }
 }
 
@@ -187,6 +207,8 @@ const loadDatasInTable = (datas, object) => {
     });
 }
 
+
+
 const createData = async (event, object) => {
     event.preventDefault();
     let data = {};
@@ -250,7 +272,77 @@ const filterDataAndLoadTable = async (object) => {
     array.push(datos);
     data.data = array;
     loadDatasInTable(data, object);
+    console.log(data)
+    const other = object === 'product' ? others(data.data[0]) : object === 'detail' ? subtotal(data.data[0]) : object === 'bill' ? total(data.data[0]) : '';
+
 };
+
+const others = async (datas) => {
+
+    let url = `http://localhost:3000/product/iva/${datas.idProduct}`
+    fetch(url).then(response => response.json())
+        .then(data =>
+            // console.log(data.data)
+            document.getElementById('iva').value = data.data
+        )
+        .catch(error => console.log(error))
+
+
+    url = `http://localhost:3000/product/expired/${datas.idProduct}`
+    fetch(url).then(response => response.json())
+        .then(data =>
+            document.getElementById('expired').value = data.message
+        )
+        .catch(error => console.log(error))
+
+}
+
+
+const subtotal = async (datas) => {
+    let url = `http://localhost:3000/detail/subtotal/${datas.code}`
+    fetch(url).then(response => response.json())
+        .then(data =>
+            // console.log(data.data)
+            document.getElementById('subtotal').value = data.data
+        )
+        .catch(error => console.log(error))
+}
+
+const total = async (datas) => {
+    let url = `http://localhost:3000/bill/total/${datas.number}`
+    fetch(url).then(response => response.json())
+        .then(data =>
+            // console.log(data.data)
+            document.getElementById('total').value = data.data
+        )
+        .catch(error => console.log(error))
+}
+
+const addDetailInBill = async (event) => {
+    event.preventDefault();
+    let form = document.getElementById('form-detail-bill');
+    let selects = form.querySelectorAll('select');
+
+    let idCreate = [];
+    selects.forEach(select => {
+        idCreate.push(select.value);
+    });
+    console.log(idCreate);
+
+    let url = `http://localhost:3000/bill/${idCreate[1]}/${idCreate[0]}`
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+        .then(data =>
+            console.log("EXITO")
+        )
+        .catch(error => console.log(error))
+
+}
+
 
 let idMongo = '';
 
